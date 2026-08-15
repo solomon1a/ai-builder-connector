@@ -1,0 +1,21 @@
+{
+  "brief": "Create a safe draft landing page.",
+  "created_at": "2026-07-27T00:00:00+00:00",
+  "status": "ready",
+  "sections": [
+    {
+      "label": "Hero heading",
+      "widget": "heading",
+      "source": "Elementor Core",
+      "description": "Create a clear draft headline based on the approved brief."
+    },
+    {
+      "label": "Intro copy",
+      "widget": "text-editor",
+      "source": "Elementor Core",
+      "description": "Add concise supporting copy summarizing the page intent."
+    }
+  ],
+  "used_widgets": ["heading", "text-editor"],
+  "blocked_widgets": []
+}

@@ -1,0 +1,19 @@
+[
+  {
+    "id": "abc1234",
+    "elType": "section",
+    "settings": {
+      "content_width": "boxed"
+    },
+    "elements": [
+      {
+        "id": "abc1234",
+        "elType": "column",
+        "settings": {
+          "_column_size": 100
+        },
+        "elements": []
+      }
+    ]
+  }
+]

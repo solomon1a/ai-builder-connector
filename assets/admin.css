@@ -1,0 +1,833 @@
+/**
+ * AI Builder Connector — Admin Styles
+ *
+ * Design direction: a drafting room. The machine drafts, the person signs off.
+ * Materials borrowed from that world: gridded drafting paper, a technical
+ * title block, red pencil marks, and rubber approval stamps.
+ *
+ * @package AIBuilderConnector
+ * @since   2.0.0
+ */
+
+/* =========================================================================
+ * Tokens
+ * ========================================================================= */
+
+.aibc-admin {
+	--ink: #16232f;
+	--ink-soft: #4d5f6e;
+	--ink-faint: #7d8d9a;
+	--paper: #fbfaf8;
+	--sheet: #ffffff;
+	--grid: rgba(22, 35, 47, 0.075);
+	--rule: #ccd6de;
+	--rule-soft: #e6ecf1;
+	--pencil: #b3261e;
+	--stamp: #14713f;
+	--amber: #8a6100;
+	--sky: #14608a;
+
+	--mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+	--sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+
+	--tick: 2px;
+	--sheet-shadow: 0 1px 0 rgba(22, 35, 47, 0.04), 0 8px 24px -18px rgba(22, 35, 47, 0.45);
+
+	max-width: 1240px;
+	margin-right: 20px;
+	color: var(--ink);
+	font-family: var(--sans);
+}
+
+/* =========================================================================
+ * Masthead — wordmark, actions, and the drawing title block
+ * ========================================================================= */
+
+.aibc-admin .aibc-masthead {
+	margin: 20px 0 0;
+	border: 1px solid var(--ink);
+	background: var(--sheet);
+	box-shadow: var(--sheet-shadow);
+}
+
+.aibc-admin .aibc-masthead-top {
+	display: flex;
+	align-items: flex-start;
+	gap: 24px;
+	padding: 22px 24px 20px;
+}
+
+.aibc-admin .aibc-mark {
+	flex: 1;
+	min-width: 0;
+}
+
+.aibc-admin .aibc-mark-name {
+	display: block;
+	font-size: 21px;
+	font-weight: 700;
+	letter-spacing: -0.021em;
+	line-height: 1.15;
+	color: var(--ink);
+}
+
+.aibc-admin .aibc-mark-line {
+	margin: 6px 0 0;
+	max-width: 54ch;
+	font-size: 13.5px;
+	line-height: 1.5;
+	color: var(--ink-soft);
+}
+
+.aibc-admin .aibc-masthead-actions {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px;
+	flex-shrink: 0;
+}
+
+/* Title block: four ruled cells, the way a drawing sheet carries its metadata. */
+.aibc-admin .aibc-titleblock {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	margin: 0;
+	border-top: 1px solid var(--ink);
+}
+
+.aibc-admin .aibc-tb-cell {
+	padding: 11px 16px 13px;
+	border-left: 1px solid var(--rule-soft);
+	min-width: 0;
+}
+
+.aibc-admin .aibc-tb-cell:first-child {
+	border-left: 0;
+}
+
+.aibc-admin .aibc-titleblock dt {
+	font-family: var(--mono);
+	font-size: 10px;
+	font-weight: 500;
+	letter-spacing: 0.14em;
+	text-transform: uppercase;
+	color: var(--ink-faint);
+	margin: 0 0 5px;
+}
+
+.aibc-admin .aibc-titleblock dd {
+	margin: 0;
+	font-family: var(--mono);
+	font-size: 15px;
+	font-weight: 700;
+	letter-spacing: -0.01em;
+	color: var(--ink);
+	overflow-wrap: anywhere;
+}
+
+.aibc-admin .aibc-titleblock dd.is-on {
+	color: var(--stamp);
+}
+
+.aibc-admin .aibc-titleblock dd.is-off {
+	color: var(--pencil);
+}
+
+/* =========================================================================
+ * Actions
+ * ========================================================================= */
+
+.aibc-admin .aibc-act {
+	display: inline-block;
+	padding: 9px 15px;
+	border: 1px solid var(--ink);
+	border-radius: var(--tick);
+	background: transparent;
+	color: var(--ink);
+	font-family: var(--mono);
+	font-size: 11px;
+	font-weight: 600;
+	letter-spacing: 0.1em;
+	text-transform: uppercase;
+	text-decoration: none;
+	transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.aibc-admin .aibc-act:hover,
+.aibc-admin .aibc-act:focus {
+	background: var(--ink);
+	color: var(--paper);
+}
+
+.aibc-admin .aibc-act-ink {
+	background: var(--ink);
+	color: var(--paper);
+}
+
+.aibc-admin .aibc-act-ink:hover,
+.aibc-admin .aibc-act-ink:focus {
+	background: #0c1721;
+	color: #fff;
+}
+
+.aibc-admin a:focus-visible,
+.aibc-admin button:focus-visible,
+.aibc-admin .aibc-act:focus-visible {
+	outline: 2px solid var(--sky);
+	outline-offset: 2px;
+	box-shadow: none;
+}
+
+/* =========================================================================
+ * Tabs
+ * ========================================================================= */
+
+.aibc-admin .aibc-tabs.nav-tab-wrapper {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0;
+	margin: 0;
+	padding: 0 12px;
+	background: var(--sheet);
+	border: 1px solid var(--ink);
+	border-top: 0;
+	border-bottom: 1px solid var(--ink);
+}
+
+.aibc-admin .aibc-tabs .nav-tab {
+	margin: 0;
+	padding: 12px 14px;
+	border: 0;
+	border-bottom: 2px solid transparent;
+	background: transparent;
+	color: var(--ink-soft);
+	font-family: var(--mono);
+	font-size: 11.5px;
+	font-weight: 600;
+	letter-spacing: 0.1em;
+	text-transform: uppercase;
+	transition: color 0.15s ease;
+}
+
+.aibc-admin .aibc-tabs .nav-tab:hover {
+	color: var(--ink);
+	background: transparent;
+}
+
+.aibc-admin .aibc-tabs .nav-tab-active,
+.aibc-admin .aibc-tabs .nav-tab-active:hover,
+.aibc-admin .aibc-tabs .nav-tab-active:focus {
+	color: var(--ink);
+	border-bottom-color: var(--ink);
+	background: transparent;
+	box-shadow: none;
+}
+
+/* =========================================================================
+ * The drafting table — gridded ground the sheets sit on
+ * ========================================================================= */
+
+.aibc-admin .aibc-tab-content {
+	margin: 0 0 26px;
+	padding: 26px 22px;
+	border: 1px solid var(--ink);
+	border-top: 0;
+	background-color: var(--paper);
+	background-image:
+		linear-gradient(var(--grid) 1px, transparent 1px),
+		linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+	background-size: 26px 26px;
+	background-position: -1px -1px;
+}
+
+/* =========================================================================
+ * Hero — the reviewer's job, stated plainly
+ * ========================================================================= */
+
+.aibc-admin .aibc-hero {
+	margin: 0 0 22px;
+	padding: 4px 2px 22px;
+	border-bottom: 1px solid var(--rule);
+}
+
+.aibc-admin .aibc-eyebrow {
+	margin: 0 0 10px;
+	font-family: var(--mono);
+	font-size: 10.5px;
+	font-weight: 600;
+	letter-spacing: 0.2em;
+	text-transform: uppercase;
+	color: var(--ink-faint);
+}
+
+.aibc-admin .aibc-hero-line {
+	margin: 0;
+	padding: 0;
+	font-size: clamp(26px, 3.2vw, 37px);
+	font-weight: 700;
+	line-height: 1.14;
+	letter-spacing: -0.025em;
+	color: var(--ink);
+}
+
+/* One red pencil stroke, the only mark on the page that isn't type or rule. */
+.aibc-admin .aibc-hero-mark {
+	background-image: linear-gradient(
+		transparent 58%,
+		rgba(179, 38, 30, 0.22) 58%,
+		rgba(179, 38, 30, 0.22) 92%,
+		transparent 92%
+	);
+	white-space: nowrap;
+}
+
+.aibc-admin .aibc-hero-sub {
+	margin: 12px 0 0;
+	max-width: 58ch;
+	font-size: 14px;
+	line-height: 1.55;
+	color: var(--ink-soft);
+}
+
+.aibc-admin .aibc-hero-actions {
+	margin-top: 18px;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px;
+}
+
+/* =========================================================================
+ * Sheets
+ * ========================================================================= */
+
+.aibc-admin .aibc-panel {
+	position: relative;
+	margin: 0 0 20px;
+	padding: 22px 24px;
+	background: var(--sheet);
+	border: 1px solid var(--rule);
+	border-radius: var(--tick);
+	box-shadow: var(--sheet-shadow);
+}
+
+.aibc-admin .aibc-panel:last-child {
+	margin-bottom: 0;
+}
+
+/* Crop marks, as on a trimmed sheet. */
+.aibc-admin .aibc-panel::before,
+.aibc-admin .aibc-panel::after {
+	content: "";
+	position: absolute;
+	width: 9px;
+	height: 9px;
+	pointer-events: none;
+}
+
+.aibc-admin .aibc-panel::before {
+	top: -1px;
+	left: -1px;
+	border-top: 2px solid var(--ink);
+	border-left: 2px solid var(--ink);
+}
+
+.aibc-admin .aibc-panel::after {
+	right: -1px;
+	bottom: -1px;
+	border-right: 2px solid var(--ink);
+	border-bottom: 2px solid var(--ink);
+}
+
+.aibc-admin .aibc-panel > h2:first-child,
+.aibc-admin .aibc-panel > h3:first-child {
+	margin: 0 0 14px;
+	padding: 0 0 10px;
+	border-bottom: 1px solid var(--rule-soft);
+	font-family: var(--mono);
+	font-size: 11.5px;
+	font-weight: 700;
+	letter-spacing: 0.14em;
+	text-transform: uppercase;
+	color: var(--ink);
+}
+
+.aibc-admin .aibc-panel h3,
+.aibc-admin .aibc-panel h4 {
+	color: var(--ink);
+	letter-spacing: -0.01em;
+}
+
+.aibc-admin .aibc-panel p {
+	color: var(--ink-soft);
+	font-size: 13.5px;
+	line-height: 1.55;
+}
+
+/* =========================================================================
+ * Stamps — the signature element
+ * ========================================================================= */
+
+.aibc-admin .aibc-review-status {
+	display: inline-block;
+	padding: 5px 9px;
+	border: 2px solid currentColor;
+	border-radius: 1px;
+	background: transparent;
+	color: var(--ink-soft);
+	font-family: var(--mono);
+	font-size: 9.5px;
+	font-weight: 700;
+	letter-spacing: 0.16em;
+	line-height: 1;
+	text-transform: uppercase;
+	white-space: nowrap;
+	transform: rotate(-2.4deg);
+	transform-origin: center;
+}
+
+.aibc-admin .aibc-review-status-approved,
+.aibc-admin .aibc-review-status-verified {
+	color: var(--stamp);
+}
+
+.aibc-admin .aibc-review-status-rejected,
+.aibc-admin .aibc-review-status-validation_failed,
+.aibc-admin .aibc-review-status-failed {
+	color: var(--pencil);
+}
+
+.aibc-admin .aibc-review-status-needs_review,
+.aibc-admin .aibc-review-status-unsupported {
+	color: var(--amber);
+}
+
+.aibc-admin .aibc-review-status-published,
+.aibc-admin .aibc-review-status-allowed {
+	color: var(--sky);
+}
+
+.aibc-admin .aibc-review-status-rolled_back,
+.aibc-admin .aibc-review-status-detected {
+	color: var(--ink-faint);
+}
+
+/* =========================================================================
+ * Review queue
+ * ========================================================================= */
+
+.aibc-admin .aibc-review-list {
+	margin: 0;
+	list-style: none;
+}
+
+.aibc-admin .aibc-review-list li {
+	display: flex;
+	align-items: center;
+	gap: 14px;
+	padding: 12px 0;
+	border-bottom: 1px solid var(--rule-soft);
+}
+
+.aibc-admin .aibc-review-list li:last-child {
+	border-bottom: 0;
+	padding-bottom: 0;
+}
+
+.aibc-admin .aibc-review-title {
+	flex: 1;
+	min-width: 0;
+	font-size: 14.5px;
+	font-weight: 600;
+	color: var(--ink);
+	text-decoration: none;
+	letter-spacing: -0.01em;
+}
+
+.aibc-admin .aibc-review-title:hover {
+	color: var(--pencil);
+	text-decoration: underline;
+	text-underline-offset: 3px;
+}
+
+.aibc-admin .aibc-review-age {
+	flex-shrink: 0;
+	font-family: var(--mono);
+	font-size: 10.5px;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	color: var(--ink-faint);
+}
+
+.aibc-admin .aibc-empty {
+	margin: 4px 0 0;
+	color: var(--ink-faint);
+	font-size: 13.5px;
+}
+
+/* =========================================================================
+ * Tables — ledger, not dashboard
+ * ========================================================================= */
+
+.aibc-admin table.widefat {
+	border: 1px solid var(--rule);
+	border-radius: var(--tick);
+	box-shadow: none;
+	border-collapse: collapse;
+}
+
+.aibc-admin table.widefat thead th,
+.aibc-admin table.widefat thead td {
+	padding: 9px 12px;
+	background: var(--paper);
+	border-bottom: 1px solid var(--ink);
+	color: var(--ink-faint);
+	font-family: var(--mono);
+	font-size: 9.5px;
+	font-weight: 700;
+	letter-spacing: 0.14em;
+	text-transform: uppercase;
+}
+
+.aibc-admin table.widefat td,
+.aibc-admin table.widefat tbody th {
+	padding: 11px 12px;
+	border-bottom: 1px solid var(--rule-soft);
+	color: var(--ink-soft);
+	font-size: 13px;
+	vertical-align: top;
+}
+
+.aibc-admin table.widefat.striped > tbody > :nth-child(odd) {
+	background: transparent;
+}
+
+.aibc-admin table.widefat tbody tr:hover {
+	background: rgba(20, 96, 138, 0.045);
+}
+
+.aibc-admin table.widefat code,
+.aibc-admin .aibc-widget-table code {
+	font-family: var(--mono);
+	font-size: 12px;
+	background: var(--paper);
+	border: 1px solid var(--rule-soft);
+	border-radius: var(--tick);
+	padding: 1px 5px;
+	white-space: nowrap;
+	color: var(--ink);
+}
+
+.aibc-admin .aibc-status-table {
+	max-width: 560px;
+}
+
+.aibc-admin .aibc-status-table th {
+	width: 190px;
+	font-family: var(--mono);
+	font-size: 10.5px;
+	letter-spacing: 0.12em;
+	text-transform: uppercase;
+	color: var(--ink-faint);
+	font-weight: 600;
+}
+
+.aibc-admin .aibc-widget-table td,
+.aibc-admin .aibc-widget-table th {
+	vertical-align: top;
+}
+
+/* =========================================================================
+ * WordPress controls, quieted to match
+ * ========================================================================= */
+
+.aibc-admin .button,
+.aibc-admin .button-secondary {
+	border-radius: var(--tick);
+	border-color: var(--rule);
+	background: var(--sheet);
+	color: var(--ink);
+	font-size: 13px;
+	transition: border-color 0.15s ease, color 0.15s ease;
+}
+
+.aibc-admin .button:hover,
+.aibc-admin .button:focus {
+	border-color: var(--ink);
+	background: var(--sheet);
+	color: var(--ink);
+}
+
+.aibc-admin .button-primary {
+	border-color: var(--ink);
+	background: var(--ink);
+	color: var(--paper);
+	text-shadow: none;
+	box-shadow: none;
+}
+
+.aibc-admin .button-primary:hover,
+.aibc-admin .button-primary:focus {
+	border-color: #0c1721;
+	background: #0c1721;
+	color: #fff;
+}
+
+.aibc-admin table.widefat td .button {
+	margin: 0 4px 5px 0;
+	padding: 2px 9px;
+	min-height: 25px;
+	line-height: 1.8;
+	font-size: 12px;
+}
+
+.aibc-admin input[type="text"],
+.aibc-admin input[type="number"],
+.aibc-admin textarea,
+.aibc-admin select {
+	border-radius: var(--tick);
+	border-color: var(--rule);
+	color: var(--ink);
+}
+
+.aibc-admin textarea:focus,
+.aibc-admin input[type="text"]:focus,
+.aibc-admin input[type="number"]:focus,
+.aibc-admin select:focus {
+	border-color: var(--ink);
+	box-shadow: 0 0 0 1px var(--ink);
+	outline: 0;
+}
+
+.aibc-admin textarea.code,
+.aibc-admin .aibc-token-preview {
+	font-family: var(--mono);
+	font-size: 12px;
+}
+
+/* =========================================================================
+ * Components
+ * ========================================================================= */
+
+.aibc-admin .aibc-actions-row {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 9px;
+}
+
+.aibc-admin .aibc-actions-row .aibc-inline-form,
+.aibc-admin .aibc-inline-form {
+	margin: 0;
+}
+
+.aibc-admin .aibc-advanced {
+	margin-top: 10px;
+}
+
+.aibc-admin .aibc-advanced > summary {
+	display: inline-block;
+	padding: 8px 13px;
+	border: 1px solid var(--rule);
+	border-radius: var(--tick);
+	background: var(--sheet);
+	cursor: pointer;
+	user-select: none;
+	font-family: var(--mono);
+	font-size: 11px;
+	font-weight: 600;
+	letter-spacing: 0.1em;
+	text-transform: uppercase;
+	color: var(--ink-soft);
+}
+
+.aibc-admin .aibc-advanced > summary:hover {
+	border-color: var(--ink);
+	color: var(--ink);
+}
+
+.aibc-admin .aibc-advanced[open] > summary {
+	margin-bottom: 14px;
+}
+
+.aibc-admin .aibc-badge {
+	display: inline-block;
+	margin: 0 4px 4px 0;
+	padding: 2px 8px;
+	border: 1px solid var(--rule);
+	border-radius: var(--tick);
+	background: var(--paper);
+	color: var(--ink-soft);
+	font-family: var(--mono);
+	font-size: 11px;
+	line-height: 1.6;
+}
+
+.aibc-admin .aibc-widget-group {
+	margin-top: 18px;
+}
+
+.aibc-admin .aibc-widget-group h3 {
+	margin: 18px 0 8px;
+	font-family: var(--mono);
+	font-size: 11px;
+	letter-spacing: 0.12em;
+	text-transform: uppercase;
+	color: var(--ink-faint);
+}
+
+.aibc-admin .aibc-draft-form {
+	margin-top: 16px;
+	max-width: 840px;
+}
+
+.aibc-admin .aibc-draft-form textarea {
+	margin: 8px 0 12px;
+}
+
+.aibc-admin .aibc-plain-list {
+	margin-left: 18px;
+	list-style: disc;
+	color: var(--ink-soft);
+}
+
+.aibc-admin .aibc-token-preview {
+	max-width: 720px;
+	padding: 12px;
+	border: 1px solid var(--rule);
+	border-radius: var(--tick);
+	background: var(--paper);
+}
+
+.aibc-admin .aibc-swatches {
+	display: flex;
+	gap: 8px;
+	margin-top: 8px;
+}
+
+.aibc-admin .aibc-swatches span {
+	width: 28px;
+	height: 28px;
+	border: 1px solid var(--rule);
+	border-radius: var(--tick);
+}
+
+.aibc-admin .aibc-bulk-form {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 8px;
+	margin: 0 0 16px;
+}
+
+.aibc-admin .aibc-bulk-form .description {
+	color: var(--ink-faint);
+	font-size: 12px;
+}
+
+.aibc-connect-help > summary {
+	cursor: pointer;
+	font-weight: 600;
+	margin: 6px 0;
+}
+
+.aibc-token-notice textarea.code {
+	font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+	font-size: 12px;
+	border-radius: 2px;
+}
+
+/* =========================================================================
+ * Brand kits — swatch chips on filing cards
+ * ========================================================================= */
+
+.aibc-admin .aibc-kit-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(196px, 1fr));
+	gap: 14px;
+	margin-top: 16px;
+}
+
+.aibc-admin .aibc-kit-card {
+	display: flex;
+	flex-direction: column;
+	gap: 9px;
+	padding: 14px;
+	border: 1px solid var(--rule);
+	border-radius: var(--tick);
+	background: var(--sheet);
+}
+
+.aibc-admin .aibc-kit-card:hover {
+	border-color: var(--ink);
+}
+
+.aibc-admin .aibc-kit-card.is-current {
+	border-color: var(--ink);
+	box-shadow: inset 0 0 0 1px var(--ink);
+}
+
+.aibc-admin .aibc-kit-swatches {
+	display: flex;
+	gap: 5px;
+}
+
+.aibc-admin .aibc-kit-swatches span {
+	width: 34px;
+	height: 34px;
+	border-radius: var(--tick);
+	border: 1px solid rgba(22, 35, 47, 0.12);
+}
+
+.aibc-admin .aibc-kit-name {
+	font-weight: 700;
+	font-size: 14px;
+	letter-spacing: -0.01em;
+	color: var(--ink);
+}
+
+.aibc-admin .aibc-kit-fonts {
+	font-family: var(--mono);
+	font-size: 11px;
+	color: var(--ink-faint);
+}
+
+.aibc-admin .aibc-kit-card form {
+	margin-top: auto;
+}
+
+/* =========================================================================
+ * Responsive & motion
+ * ========================================================================= */
+
+@media screen and (max-width: 900px) {
+	.aibc-admin .aibc-masthead-top {
+		flex-direction: column;
+		gap: 16px;
+	}
+
+	.aibc-admin .aibc-titleblock {
+		grid-template-columns: repeat(2, 1fr);
+	}
+
+	.aibc-admin .aibc-tb-cell:nth-child(3) {
+		border-left: 0;
+	}
+
+	.aibc-admin .aibc-tb-cell:nth-child(n + 3) {
+		border-top: 1px solid var(--rule-soft);
+	}
+
+	.aibc-admin .aibc-tab-content {
+		padding: 20px 14px;
+	}
+
+	.aibc-admin .aibc-review-list li {
+		flex-wrap: wrap;
+		gap: 9px;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.aibc-admin * {
+		transition: none !important;
+	}
+}

@@ -1,0 +1,27 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# Editors
+.idea/
+.vscode/
+*.swp
+
+# Build output
+/build/
+/dist/
+*.zip
+
+# Local sync artifacts
+_to_delete/
+_sync_*/
+_rs/
+
+# Private working notes: contains server/infra details, keep out of the public repo
+AGENTS.md
+
+# Clean copy prepared for the public GitHub repo
+aibc-public/
+
+# Internal implementation plans stay in the private repo
+docs/

@@ -1,0 +1,8 @@
+# Files kept in the repository but excluded from the distributed plugin zip.
+.git
+.gitignore
+.distignore
+.github
+docs
+tests
+AGENTS.md
